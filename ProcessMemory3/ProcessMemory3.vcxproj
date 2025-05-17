@@ -94,6 +94,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ProcessMemory3.cpp" />
+    <ClCompile Include="driver_entry.cpp" />
+    <ClCompile Include="driver_io.cpp" />
+    <ClCompile Include="memory_inspector.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
