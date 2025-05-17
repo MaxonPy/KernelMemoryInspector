@@ -1,0 +1,44 @@
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+DriverVer=03/28/2025,1.0.0.0
+CatalogFile=MyDriver1.cat
+PnpLockdown=1
+
+[Manufacturer]
+%ManufacturerName% = Standard_Install,NTx86,NTamd64
+
+[Standard_Install.NTx86]
+%DeviceDesc% = InstallSection,, *PNP0XYZ
+
+[Standard_Install.NTamd64]
+%DeviceDesc% = InstallSection,, *PNP0XYZ
+
+[InstallSection]
+CopyFiles = @ProcessMemory3.sys
+
+[InstallSection.Services]
+AddService = ProcessMemory3,0x00000002,ServiceInstallSection
+
+[ServiceInstallSection]
+DisplayName    = %DeviceDesc%
+ServiceType    = 1  ; SERVICE_KERNEL_DRIVER
+StartType      = 3  ; SERVICE_DEMAND_START
+ErrorControl   = 1  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\ProcessMemory3.sys
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+ProcessMemory3.sys = 1
+
+[Strings]
+ManufacturerName="Maxim"
+DeviceDesc="Process Memory Driver"
+DiskName="ProcessMemory5 Source Disk"
